@@ -149,7 +149,8 @@ function [X_Data, theta, guide_max_thre] = genSyntheticData(Num, noise_in, noise
     flag_out = 1:outlier_num;
     flag_in = outlier_num+1:Num;
     
-    gNoise_in = -noise_in+2*noise_in*rand(inlier_num, dim);
+    %gNoise_in = -noise_in+2*noise_in*rand(inlier_num, dim);
+    gNoise_in = noise_in*randn(inlier_num,dim);
     X_Data(flag_in,1:end-1) = X_Data(flag_in,1:end-1)+gNoise_in;
     
     gNoise_out = -noise_out+2*noise_out*rand(outlier_num, dim);
