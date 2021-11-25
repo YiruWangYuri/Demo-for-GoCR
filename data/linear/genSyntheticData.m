@@ -155,10 +155,11 @@ function [X_Data, theta, guide_max_thre] = genSyntheticData(Num, noise_in, noise
     
     gNoise_out = -noise_out+2*noise_out*rand(outlier_num, dim);
     
-    if FlagofBlance==0
-        gNoise_out = abs(gNoise_out);
-    end
-    X_Data(flag_out,1:end-1) = X_Data(flag_out,1:end-1)+gNoise_out;
+    %if FlagofBlance==0
+    %    gNoise_out = abs(gNoise_out);
+    %end
+    %X_Data(flag_out,1:end-1) = X_Data(flag_out,1:end-1)+gNoise_out;
+    X_Data(flag_out,1:end-1) = gNoise_out;
   
     % guide inlier threshold for experiment 
     temp = abs(acos(X_Data*theta./sqrt(sum(X_Data.^2, 2)))-pi/2);
